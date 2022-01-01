@@ -34,13 +34,14 @@ onMounted(() => {
 	canvas.value.width = document.body.offsetWidth
 	canvas.value.height = document.body.offsetHeight
 	const ctx = canvas.value.getContext('2d')
+	ctx.strokeStyle = 'rgba(0, 0, 0, 0.3)'
 	let count = 0
 
 	function renderPoints (p) {
-		for (let t=0; t<=1; t+=0.0025) {
+		for (let t=0; t<=1; t+=0.0035) {
 			const b = cubicBezier(t, p[0], p[1], p[2], p[3])
 			ctx.beginPath()
-			ctx.arc(b.x, b.y, 4, 0, 2 * Math.PI)
+			ctx.arc(b.x + Math.random() * 10, b.y + Math.random() * 10, 4 + Math.random() * 4, 0, 2 * Math.PI)
 			ctx.stroke()
 			count++
 		}
@@ -62,28 +63,28 @@ onMounted(() => {
 	])
 	}
 
-	render2(100, 300)
+	render2(100, 100)
 	
 	// 0
 
 	renderPoints ([
-		{x: 400, y: 550},
-		{x: 400, y: 300},
-		{x: 600, y: 300},
-		{x: 600, y: 550}
+		{x: 400, y: 350},
+		{x: 400, y: 100},
+		{x: 600, y: 100},
+		{x: 600, y: 350}
 	])
 
 	renderPoints ([
-		{x: 400, y: 550},
-		{x: 400, y: 780},
-		{x: 600, y: 780},
-		{x: 600, y: 550}
+		{x: 400, y: 350},
+		{x: 400, y: 580},
+		{x: 600, y: 580},
+		{x: 600, y: 350}
 	])
 
 
-	render2(630, 300)
+	render2(630, 100)
 
-	render2(950, 300)
+	render2(950, 100)
 
 	
 	console.log(count)
